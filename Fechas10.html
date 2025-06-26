@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <HTML lang="en-US">
 <HEAD>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, interactive-widget=resizes-content">
 <meta charset="utf-8">
 <link rel="shortcut icon" href="./favicon.ico">
 <link rel="stylesheet" charset="utf-8" href="./tablaspruebas.css">
@@ -21,10 +21,10 @@
 <INPUT TYPE="radio"  NAME="nombre" ID="avon2" VALUE="Avon2" checked onClick="cambiarcss('avon2','table',3,0)">
 <label for="avon2">Avon2</label>
 </FORM>
-<form inputmode="numeric" id="busqueda" class="sticky" autocomplete="off" spellcheck="false">
+<form id="busqueda" class="sticky" autocomplete="off" spellcheck="false">
 <label for= "zona" style="font-size:24px;">Buscador de zonas:</label>
 <br>
-<input name= "zonas" id= "zona" />
+<input inputmode="numeric" name= "zonas" id= "zona" />
 <input type= "submit" value= "Buscar">
 <input type= "button" value= "Hacer transparante" id= "notransparente" onclick="transparencia()">
 <pre id= "tecsto"></pre>
