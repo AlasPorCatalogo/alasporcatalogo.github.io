@@ -1,6 +1,5 @@
 ﻿var Indicelistas, listazonas, listaciudades, conteo, conteocsstablas, conteolog, elementoccss, IDaCeldas, IDenCeldas, AgregarID, Busquedacelda, zonam2, logElement, conteobusqueda, submitElement, inputElement, zonaIaEC, conteotransparencia, aoc, columna, zonaspresentes, lineadesalto;
 function comandosZonas(comando) {
-console.log('comandos');
 var ejecutar = true;
 if (comando == 'nos') {
   lineadesalto = '';
@@ -19,7 +18,6 @@ if (ejecutar == true) {
 }
 }
 function encontrarcelda(zona) {
-console.log('encontrar');
 if(Busquedacelda !== null && Busquedacelda.tagName != 'TABLE') {
   Busquedacelda.className = '';
 }
