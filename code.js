@@ -165,11 +165,11 @@ Interpretarzonas(String(inputElement.value));
 function transparencia() {
 if (conteotransparencia == 0) {
 conteotransparencia++;
-cambiarcss('Transparente','form',1,3);
+cambiarcss('Transparente','form',1,1);
 }
 else {
 conteotransparencia = 0;
-cambiarcss('sticky','form',1,3);
+cambiarcss('sticky','form',1,1);
 }
 
 }
