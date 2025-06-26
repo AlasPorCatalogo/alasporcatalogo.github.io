@@ -1,15 +1,15 @@
 ﻿var Indicelistas, listazonas, listaciudades, conteo, conteocsstablas, conteolog, elementoccss, IDaCeldas, IDenCeldas, AgregarID, Busquedacelda, zonam2, logElement, conteobusqueda, submitElement, inputElement, zonaIaEC, conteotransparencia, aoc, columna, zonaspresentes, lineadesalto;
 function comandosZonas(comando) {
 var ejecutar = true;
-if (comando == 'nos') {
+if (comando == 'nos' || comando == '-') {
   lineadesalto = '';
   ejecutar = false;
 }
-if (comando == 'sis') {
+if (comando == 'sis' || comando == '.') {
   lineadesalto = '\n';
   ejecutar = false;
 }
-if(comando == 'tr') {
+if(comando == 'tr' || comando == ',') {
   transparencia();
   ejecutar = false;
 }
@@ -191,15 +191,15 @@ if (zona == '-0' + String(BloqueI) && !isNaN(String(BloqueI))) {
   aoc = 'start';
   reiniciaraoc = 1;
 }
-if (zona == 'n-os') {
+if (BloqueI == 'nos' || BloqueI == '-') {
   logElement.innerText = `Quitar saltos de linea`;
   reiniciaraoc = 1;
 }
-if (zona == 's-is') {
+if (BloqueI == 'sis' || BloqueI == '.') {
   logElement.innerText = `Añadir saltos de linea`;
   reiniciaraoc = 1;
 }
-if (zona == 't-0r') {
+if (BloqueI == 'tr' || BloqueI == ',') {
   logElement.innerText = `Cambio de transparencia`;
   reiniciaraoc = 1;
 }
