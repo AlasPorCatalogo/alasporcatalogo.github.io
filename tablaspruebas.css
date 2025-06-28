@@ -252,6 +252,7 @@ color: #f0feff;
 #busqueda #zona {
 margin-top: 12px;
 font-size: 20px;
+touch-action: none;
 }
 #busqueda.sticky {
 Background: #1c1d22;
