@@ -1,4 +1,4 @@
-var Indicelistas, listazonas, listaciudades, conteo, conteocsstablas, conteolog, elementoccss, IDaCeldas, IDenCeldas, AgregarID, Busquedacelda, zonam2, logElement, conteobusqueda, submitElement, inputElement, zonaIaEC, conteotransparencia, aoc, columna, zonaspresentes, lineadesalto, conteoteclado, label, button, longitudinput, busquedaciudades, celdasaquitarclase, celdasascroll, longitudbusquedaactual, conteobusquedaactual, logelementsinrepeticion;
+var Indicelistas, listazonas, listaciudades, conteo, conteocsstablas, conteolog, elementoccss, IDaCeldas, IDenCeldas, AgregarID, Busquedacelda, zonam2, logElement, conteobusqueda, submitElement, inputElement, zonaIaEC, conteotransparencia, aoc, columna, zonaspresentes, lineadesalto, conteoteclado, label, button, busquedaciudades, celdasaquitarclase, celdasascroll, longitudbusquedaactual, conteobusquedaactual, logelementsinrepeticion, debug;
 document.addEventListener("DOMContentLoaded", (event) => {
   // Page has loaded
   celdasaquitarclase = [];
@@ -22,14 +22,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
   inputElement = document.getElementById("zona");
   label = document.querySelector('#LabelBuscar');
   button = document.querySelector('#Teclado');
+  logElement.innerText = `Escribe " " para cambiar rápidamente de buscador`
   submitElement.addEventListener("submit", (event) => {
   event.preventDefault();
-  comandosZonas(String(inputElement.value));
+  comandosZonas(String(aplanartexto(inputElement.value)));
 }
 );
   inputElement.addEventListener("keyup", () => {
     conteobusqueda = conteobusqueda -1;
-    Interpretarzonas(String(inputElement.value));
+    Interpretarzonas(String(aplanartexto(inputElement.value)));
 });
 });
 
@@ -37,9 +38,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 function comandosZonas(comando) {
+if (debug) {
+console.log('"',comando,'"','comandosZonas()');
+}
 var ejecutar = true;
 if (conteobusquedaactual > longitudbusquedaactual) {
   conteobusquedaactual = 1;
+}
+if (comando == 'debug') {
+  debug = true;
+  console.log('modo debug activado');
+  ejecutar = false;
 }
 if (comando == 'nos' || comando == '-') {
   lineadesalto = '';
@@ -58,27 +67,39 @@ if(comando == 'tec' || comando == ' ') {
   ejecutar = false;
 }
 if (ejecutar == true) {
-  if (celdasascroll.length > 0 && busquedaciudades != inputElement.value.toLowerCase()) {
+  if (celdasascroll.length > 0 && busquedaciudades != aplanartexto(inputElement.value)) {
   while (celdasascroll.length > 0) {
   celdasascroll.pop();
+  }
+  if (debug) {
+  console.log('celdasacroll vaciado');
   }
   conteobusquedaactual = 1;
   }
   if (inputElement.inputMode == 'numeric') {
     encontrarcelda(String(zonaIaEC),true);
   }
-  if (inputElement.inputMode == 'text' && celdasascroll.length > 0 && busquedaciudades == inputElement.value.toLowerCase()) {
+  if (inputElement.inputMode == 'text' && celdasascroll.length > 0 && busquedaciudades == aplanartexto(inputElement.value)) {
+    if (debug) {
+    console.log('SiguienteCelda()');
+    }
     SiguienteCelda();
   }
 
   else if (inputElement.inputMode == 'text' && celdasascroll.length < 1) {
-   BuscadorCiudades(String(comando)); 
+   if (debug) {
+   console.log('BuscadorCiudades()desde comandosZonas()')
+   }
+   BuscadorCiudades(String(comando));
   }
 }
 }
 
 
 function encontrarcelda(zona, quitarclase) {
+if (debug) {
+console.log(zona,'encontrarcelda()')
+}
 if (quitarclase) {
 quitarclases();
 }
@@ -106,16 +127,15 @@ function BuscadorCiudades(ciudad) {
 encontrarcelda('ningunelemento',true);
 var conteociu = 0, conteolog = 0, zonasencontradas = [];
 if (celdasascroll.length < 1) {
-ciudad = ciudad.toLowerCase()
+ciudad = aplanartexto(ciudad);
 listaciudades.forEach(elementoactual => {
   conteociu++;
-  elementoactual = elementoactual.toLowerCase();
+  elementoactual = aplanartexto(elementoactual);
   if (elementoactual.indexOf(ciudad) != -1) {
   if (revisarexistencias(listazonas[conteociu-1], zonaspresentes, false)) {
   zonasencontradas.push(listazonas[conteociu-1]);
   conteolog++;
   }
-//console.log(listazonas[conteociu-1], elementoactual, listaciudades[conteociu-1], conteociu-1);
   }
 });
 if (busquedaciudades != inputElement.value.toLowerCase()) {
@@ -125,11 +145,16 @@ if (busquedaciudades != inputElement.value.toLowerCase()) {
 zonasencontradas.forEach(zonaactual => {
   encontrarcelda(String(zonaactual),false);
 });
-longitudinput = ciudad.length;
 }
 busquedaciudades = ciudad;
 if (celdasascroll.length > 0) {
-  comandosZonas(String(inputElement.value));
+if (debug) {
+console.log('comandosZonas() desde BuscadorCiudades()')
+}
+  comandosZonas(String(ciudad));
+}
+if (conteolog == 0) {
+logElement.innerText = `${logElement.innerText}\nNo hay ninguna zona registrada en esa ciudad`;
 }
 }
 
@@ -172,6 +197,7 @@ console.log('Cambiada exitosamente la clase de',clcss,nombreelemento)
 
 
 function agregarciudades() {
+var widthtable2 = document.getElementById('2').offsetWidth;
 conteo = 0;
 conteolog = 0;
 columna = 0;
@@ -216,6 +242,17 @@ elements.forEach(element => {
 });
 }
 AgregarID = true;
+var widthtable = document.getElementById('2').offsetWidth;
+var busqueda = document.getElementById('busqueda');
+var logElement = document.getElementById("tecsto");
+console.log(widthtable2, widthtable, busqueda.offsetWidth)
+if (busqueda.offsetWidth < widthtable) {
+busqueda.setAttribute('style', `width:${widthtable}px;`);
+logElement.setAttribute('style', `max-width:${widthtable}px;`);
+}
+else {
+logElement.setAttribute('style', `max-width:100vw;`);
+}
 console.log('Busqueda realizada en',conteo,'Divs. Agregadas',conteolog,'ciudades de',listaciudades.length,'disponibles');
 }
 
@@ -255,6 +292,9 @@ scrollcelda();
 
 
 function Interpretarzonas(zona) {
+if (logElement.childElementCount > 5) {
+logElement.innerText = ''
+}
 var BloqueI = zona, reiniciaraoc = 0;
 if (BloqueI == 'nos' || BloqueI == '-') {
   logElement.innerText = `Quitar saltos de linea`;
@@ -321,8 +361,7 @@ if (Notacelda != '') {
 zonaIaEC = zona;
 }
 if (inputElement.inputMode == 'text') {
-  if (longitudinput != inputElement.value.length && reiniciaraoc == 0) {
-    longitudinput = longitudinput -1;
+  if (busquedaciudades.length != inputElement.value.length && reiniciaraoc == 0) {
     logElement.innerText = `Buscar ciudad: ${zona}`
   }
  }
@@ -361,7 +400,20 @@ cambiarcss('sticky','form',1,1);
 }
 }
 
+
+//Manipulacion de texto
+
+function aplanartexto(TextoaAplanar, Textoaplanado = TextoaAplanar) {
+//thanks for this code to Niall Maher (https://www.codu.co/articles/remove-accents-from-a-javascript-string-skgp1inb)
+Textoaplanado = TextoaAplanar.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+Textoaplanado = Textoaplanado.toLowerCase();
+return Textoaplanado;
+}
+
+
 //console section
+
+
 function revisarduplicados(unarray) {
   var ejecutar = true;
   if (!Array.isArray(unarray)) {
