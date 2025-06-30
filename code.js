@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   inputElement = document.getElementById("zona");
   label = document.querySelector('#LabelBuscar');
   button = document.querySelector('#Teclado');
-  logElement.innerText = `Escribe " " para cambiar rápidamente de buscador`
+  logElement.innerText = `Escribe " " o "tec" para cambiar rápidamente de buscador`
   submitElement.addEventListener("submit", (event) => {
   event.preventDefault();
   comandosZonas(String(aplanartexto(inputElement.value)));
@@ -138,8 +138,7 @@ listaciudades.forEach(elementoactual => {
   }
   }
 });
-if (busquedaciudades != inputElement.value.toLowerCase()) {
-  logElement.innerText = `${logElement.innerText}`
+if (busquedaciudades != aplanartexto(inputElement.value)) {
   logelementsinrepeticion = logElement.innerText;
 }
 zonasencontradas.forEach(zonaactual => {
@@ -154,7 +153,7 @@ console.log('comandosZonas() desde BuscadorCiudades()')
   comandosZonas(String(ciudad));
 }
 if (conteolog == 0) {
-logElement.innerText = `${logElement.innerText}\nNo hay ninguna zona registrada en esa ciudad`;
+logElement.innerText = `${logElement.innerText}\nNo hay ninguna zona registrada en la ciudad "${ciudad}"`;
 }
 }
 
@@ -293,7 +292,7 @@ scrollcelda();
 
 function Interpretarzonas(zona) {
 if (logElement.childElementCount > 5) {
-logElement.innerText = ''
+logElement.innerText = '';
 }
 var BloqueI = zona, reiniciaraoc = 0;
 if (BloqueI == 'nos' || BloqueI == '-') {
@@ -361,7 +360,7 @@ if (Notacelda != '') {
 zonaIaEC = zona;
 }
 if (inputElement.inputMode == 'text') {
-  if (busquedaciudades.length != inputElement.value.length && reiniciaraoc == 0) {
+  if (busquedaciudades != aplanartexto(inputElement.value) && reiniciaraoc == 0) {
     logElement.innerText = `Buscar ciudad: ${zona}`
   }
  }
@@ -407,6 +406,11 @@ function aplanartexto(TextoaAplanar, Textoaplanado = TextoaAplanar) {
 //thanks for this code to Niall Maher (https://www.codu.co/articles/remove-accents-from-a-javascript-string-skgp1inb)
 Textoaplanado = TextoaAplanar.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 Textoaplanado = Textoaplanado.toLowerCase();
+if (inputElement.inputMode == 'text') {
+  while (!/[a-z]/.test(Textoaplanado.slice(-1)) && Textoaplanado.length > 1)/*revisa el ultimo caracter para ver si no es una letra minúscula*/ {
+    Textoaplanado = Textoaplanado.slice(0,-1); /*quita el último carácter*/ 
+ }
+}
 return Textoaplanado;
 }
 
