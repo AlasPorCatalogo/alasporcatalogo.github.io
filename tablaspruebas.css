@@ -1,6 +1,4 @@
-table.VerdeBN{
-    border: solid #009879;
-    border-width: 3px 3px 3px 3px;
+table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -9,24 +7,19 @@ table.VerdeBN{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-table.VerdeBN thead tr, .se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable table.VerdeBN thead tr, .sun-editor-editable table.VerdeBN th {
-    background-color: #009879!important;
-    color: #ffffff!important;
-    text-align: left;
-}
-
-table.VerdeBN th,
-table.VerdeBN td {
-    padding: 7px 7px;
-}
-
-table.VerdeBN tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
 table tbody tr td div, table thead tr th div {
     text-align: center;
 }
+
+table.VerdeBN {
+    border: 3px solid #009879;
+}
+
+table.VerdeBN thead tr {
+    background-color: #009879;
+    color: #ffffff;
+}
+
 table.VerdeBN tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
     font-weight: bold;
@@ -40,39 +33,20 @@ table.VerdeBN tbody tr:nth-of-type(odd) {
 }
 
 table.VerdeBN tbody tr:nth-of-type(even) td {
-	border: solid red;
-    border-width: 1px 1px 1px;
+    border: 1px solid red;
 }
 
 table.VerdeBN tbody tr:nth-of-type(odd) td {
-	border: solid blue;
-    border-width: 1px 1px 1px;
+    border: 1px solid blue;
 }
 
-table.VerdeBN tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-table.StarFinder{
-    border: solid #009879;
-    border-width: 0px 0px 0px 0px;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-
-table.StarFinder thead tr, .se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable table.StarFinder thead tr, .sun-editor-editable table.StarFinder th {
-    background-color: #001839!important;
-    color: #ffffff!important;
-    text-align: left;
-}
-
-table.StarFinder th,
-table.StarFinder td {
+table.VerdeBN th, table.VerdeBN td, table.StarFinder th, table.StarFinder td {
     padding: 7px 7px;
+}
+
+table.StarFinder thead tr {
+    background-color: #001839;
+    color: #ffffff;
 }
 
 table.StarFinder tbody tr {
@@ -80,53 +54,31 @@ table.StarFinder tbody tr {
 }
 
 table.StarFinder tbody tr:nth-of-type(even) {
-    background-color: #fefefe!important;
+    background-color: #fefefe;
     font-weight: bold;
     color: black;
-    z-index: -1;
 }
 table.StarFinder tbody tr:nth-of-type(odd)  {
     background-color: #b5d8e9;
     font-weight: bold;
     color: black;
-	z-index: -1;
 }
-table.StarFinder tbody tr:nth-of-type(even) td {
-	border: solid black;
-    border-width: 0px 1px 0px;
-	z-index: 32;
-}
-table.StarFinder tbody tr:nth-of-type(odd) td {
-	border: solid black;
-    border-width: 0px 1px 0px;
-	z-index: 32;
-}
-table.avon1{
-    border: solid #000000;
-    border-width: 0px 0px 0px 0px;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+table.StarFinder tbody tr td {
+    border: solid black;
+    border-width: 0px 1px;
 }
 
-table.avon1 thead tr, .se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable table.avon1 thead tr, .sun-editor-editable table.avon1 th {
-    background-color: #602788!important;
-    color: #ffffff!important;
-	text-align: center
+table.avon1 thead tr{
+    background-color: #602788;
+    color: #ffffff;
 }
 
-table.avon1 thead tr th div {	text-align: center}
 table.avon1 thead tr th {
-	border: solid black;
-    border-width: 3px 2px 3px 2px;
-	z-index: 32;
+    border: solid black;
+    border-width: 3px 2px;
 }
 
-table.avon1 th,
-table.avon1 td {
+table.avon1 th, table.avon1 td, table.avon2 th, table.avon2 td {
     padding: 5px 5px;
 }
 
@@ -138,7 +90,6 @@ table.avon1 tbody tr:nth-of-type(even) {
     background-color: #f3c6fd;
     font-weight: bold;
     color: black;
-	z-index: -1;
 }
 
 
@@ -147,56 +98,22 @@ table.avon1 tbody tr:nth-of-type(odd)  {
     background-color: #b3cbec;
     font-weight: bold;
     color: black;
-	z-index: -1;
 }
 
-table.avon1 tbody tr:nth-of-type(even) td {
-	border: solid black;
-    border-width: 0px 2px 0px 2px;
-	z-index: 32;
-}
-
-table.avon1 tbody tr:nth-of-type(odd) td {
-	border: solid black;
-    border-width: 0px 2px 0px 2px;
-	z-index: 32;
+table.avon1 tbody tr td {
+    border: solid black;
+    border-width: 0px 2px;
 
 }
 
-table.avon1 tbody tr:last-of-typetable.avon1 tbody tr:first-of-type {
-    border-bottom: 3px solid #000000;
+table.avon2 thead tr {
+    background-color: #602788;
+    color: #ffffff;
 }
 
-table.avon1 tbody tr:first-of-type {
-    border-top: 3px solid #000000;
-}
-table.avon2{
-    border: solid #000000;
-    border-width: 0px 0px 0px 0px;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-table.avon2 thead tr, .se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable table.avon2 thead tr, .sun-editor-editable table.avon2 th {
-    background-color: #602788!important;
-    color: #ffffff!important;
-	text-align: center
-}
-
-table.avon2 thead tr th div {	text-align: center}
 table.avon2 thead tr th {
-	border: solid black;
-    border-width: 3px 2px 3px 2px;
-	z-index: 32;
-}
-
-table.avon2 th,
-table.avon2 td {
-    padding: 5px 5px;
+    border: solid black;
+    border-width: 3px 2px;
 }
 
 table.avon2 tbody tr {
@@ -207,53 +124,36 @@ table.avon2 tbody tr:nth-of-type(even) {
     background-color: #b98fe2;
     font-weight: bold;
     color: black;
-	z-index: -1;
 }
-
-
 
 table.avon2 tbody tr:nth-of-type(odd)  {
     background-color: #7490d8;
     font-weight: bold;
     color: black;
-	z-index: -1;
 }
 
-table.avon2 tbody tr:nth-of-type(even) td {
-	border: solid black;
-    border-width: 0px 2px 0px 2px;
-	z-index: 32;
+table.avon2 tbody tr td {
+    border: solid black;
+    border-width: 0px 2px;
 }
 
-table.avon2 tbody tr:nth-of-type(odd) td {
-	border: solid black;
-    border-width: 0px 2px 0px 2px;
-	z-index: 32;
-
-}
-
-table.avon2 tbody tr:last-of-typetable.avon2 tbody tr:first-of-type {
-    border-bottom: 3px solid #000000;
-}
-
-table.avon2 tbody tr:first-of-type {
-    border-top: 3px solid #000000;
-}
-html, select, option, textarea { /* main background */
+html, select, option, textarea {
     font-size: 12pt;
     background: #1c1d22;
     color: white;
-font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-family: Segoe UI,BlinkMacSystemFont,-apple-system,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+
 .encontrado {
 background-color: #1c1d22;
 color: #f0feff;
 }
+
 #busqueda #zona {
 margin-top: 12px;
 font-size: 20px;
-touch-action: none;
 }
+
 #busqueda.sticky {
 Background: #1c1d22;
 font-family: monospace;
@@ -261,6 +161,7 @@ position: sticky;
 top: 0px;
 scroll-margin-bottom: 800px;
 }
+
 #busqueda.Transparente, #busqueda.Transparente input {
 Background: #1c1d2200;
 Color: #f0feff00;
@@ -269,26 +170,28 @@ top: 0px;
 border-color: #5d5e6600;
 outline: none;
 }
+
 input, #busqueda.Transparente input#notransparente {
 Background: #303040;
 Color: #f0feff;
 border-color: #5d5e66;
 }
+
 #busqueda{
 padding-bottom: 4px;
 padding-right: 8px;
 }
-@media (width <= 900px){
 
-}
 #busqueda pre {
 overflow-wrap: anywhere;
 white-space: pre-line!important;
 font-size: 20px;
 }
+
 form {
 min-width: max-content;
 }
+
 form:not(#busqueda) {
 margin-bottom: 8px;
 }
