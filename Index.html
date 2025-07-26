@@ -9,27 +9,105 @@
 <TITLE>Fechas 12</TITLE>
 <SCRIPT src="./code.js" charset="utf-8"></SCRIPT>
 </HEAD>
-<BODY>
+<body>
 <h1 style="margin-bottom:8px;margin-top:8px;">Cambiar color de las tablas:</h1>
-<FORM NAME="Cambiodecss">
-<INPUT TYPE="radio"  NAME="nombre" ID="VerdeBN" VALUE="VerdeBN" onClick="cambiarcss('VerdeBN','table',3,0)">
+
+<form id="cambiodecss" name="Cambiodecss">
+
+<div class="colorselector">
+
+<input type="radio" name="nombre" id="VerdeBN" value="VerdeBN" onclick="cambiarcss('VerdeBN','table',3,0)">
+
 <label for="VerdeBN">VerdeBN</label>
-<INPUT TYPE="radio"  NAME="nombre" ID="StarFinder" VALUE="StarFinder" onClick="cambiarcss('StarFinder','table',3,0)">
+
+<div  class="colorcontainer" style="border-color: red;border-bottom-color: blue;border-right-color: blue;">
+
+<div class="tablecolor" style="background-color: #009879;grid-area: c1r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #f3f3f3;grid-area: c2r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #3f3f3f;grid-area: c1r2;">
+</div>
+
+</div>
+
+</div>
+
+<div class="colorselector">
+
+<input type="radio" name="nombre" id="StarFinder" value="StarFinder" onclick="cambiarcss('StarFinder','table',3,0)">
+
 <label for="StarFinder">StarFinder</label>
-<INPUT TYPE="radio"  NAME="nombre" ID="avon1" VALUE="avon1" onClick="cambiarcss('avon1','table',3,0)">
+
+<div class="colorcontainer"style="border-color: #dddddd;">
+
+<div class="tablecolor"style="background-color: #001839;grid-area: c1r1;">
+</div>
+
+<div class="tablecolor"
+style="background-color: #fefefe;grid-area: c2r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #b5d8e9;grid-area: c1r2;">
+</div>
+
+</div>
+
+</div>
+
+<div class="colorselector">
+
+<input type="radio" name="nombre" id="avon1" value="avon1" onclick="cambiarcss('avon1','table',3,0)">
+
 <label for="avon1">Avon1</label>
-<INPUT TYPE="radio"  NAME="nombre" ID="avon2" VALUE="Avon2" checked onClick="cambiarcss('avon2','table',3,0)">
+
+<div class="colorcontainer"style="border-color: black;">
+
+<div class="tablecolor"style="background-color: #602788;grid-area: c1r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #f3c6fd;grid-area: c2r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #b3cbec;grid-area: c1r2;">
+</div>
+
+</div>
+
+</div>
+
+<div class="colorselector">
+
+<input type="radio" name="nombre" id="avon2" value="Avon2" checked="" onclick="cambiarcss('avon2','table',3,0)">
+
 <label for="avon2">Avon2</label>
-</FORM>
+
+<div class="colorcontainer"style="border-color: black;">
+
+<div class="tablecolor"style="background-color: #602788;grid-area: c1r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #7490d8;grid-area: c2r1;">
+</div>
+
+<div class="tablecolor"style="background-color: #b98fe2;grid-area: c1r2;">
+</div>
+
+</div>
+
+</div>
+</form>
 <form id="busqueda" class="sticky" autocomplete="off" spellcheck="false">
 <label id="LabelBuscar" for= "zona" style="font-size:24px;">Buscador de zonas:</label>
 <br>
 <input type= "submit" value= "Buscar">
-<input type= "button" value= "Hacer transparante" id= "notransparente" onclick="transparencia()">
+<input type= "button" value= "Hacer transparante" id="notransparente" onclick="transparencia()">
 <br>
-<input inputmode="numeric" name= "zonas" id= "zona" />
+<input inputmode="numeric" name= "zonas" id="zona" />
 <input id="Teclado" type="button" value="Buscar ciudades" onclick="CambiarTeclado()">
-<pre style="max-width:100vw;overflow-wrap:anywhere;white-space:pre-line!important;" id= "tecsto"></pre>
+<pre style="max-width:100vw;overflow-wrap:anywhere;white-space:pre-line!important;" id="tecsto"></pre>
 </form>
 
 <h1 id="-01">Bloque 1 Campaña 12</h1>
@@ -2058,6 +2136,6 @@
 
 
 <br>
-<div style="height:1000px;"></div>
-</BODY>
+<div class="colorlessdiv" style="height:1000px;"></div>
+</body>
 </HTML>
