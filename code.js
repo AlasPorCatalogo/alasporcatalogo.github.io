@@ -1,36 +1,38 @@
 var Indicelistas, listazonas, listaciudades, conteo, conteolog, IDaCeldas, IDenCeldas, ejecutaragregarciudades, logElement, conteobusqueda, formElement, inputElement, zonaIaEC, conteotransparencia, aoc, columna, zonaspresentes, lineadesalto, conteoteclado, label, button, busquedaciudades, celdasaquitarclase, celdasascroll, longitudbusquedaactual, conteobusquedaactual, logelementsinrepeticion, debug, consejos;
 document.addEventListener("DOMContentLoaded", (event) => {
-  // Page has loaded
+// Page has loaded
   definicionvariables();
   cambiarcss('avon2','table',3,0);
   agregarciudades();
 });
 
-
 function definicionvariables() {
-  celdasaquitarclase = [];
-  celdasascroll = [];
-  zonaspresentes = [];
-  lineadesalto = '\n';
-  conteobusquedaactual = 1;
-  conteotransparencia = 0;
-  conteoteclado = 0;
-  conteobusqueda = 0;
-  formElement = document.getElementById("busqueda");
-  logElement = document.getElementById("tecsto");
-  inputElement = document.getElementById("zona");
-  label = document.querySelector('#LabelBuscar');
-  button = document.querySelector('#Teclado');
-  window.addEventListener("resize", (event) => {extendercuadrodebusqueda();})
-  logElement.innerText = consejos[mathRandomInt(0, consejos.length-1)];
-  formElement.addEventListener("submit", (event) => {
+celdasaquitarclase = [];
+celdasascroll = [];
+zonaspresentes = [];
+lineadesalto = '\n';
+conteobusquedaactual = 1;
+conteotransparencia = 0;
+conteoteclado = 0;
+conteobusqueda = 0;
+resizing = false;
+formElement = document.getElementById("busqueda");
+logElement = document.getElementById("tecsto");
+inputElement = document.getElementById("zona");
+label = document.querySelector('#LabelBuscar');
+button = document.querySelector('#Teclado');
+ window.addEventListener("resize", (event) => {
+  extendercuadrodebusqueda();
+ });
+logElement.innerText = consejos[mathRandomInt(0, consejos.length-1)];
+ formElement.addEventListener("submit", (event) => {
   event.preventDefault();
   comandosZonas(String(aplanartexto(inputElement.value)));
-});
-  inputElement.addEventListener("keyup", () => {
-    conteobusqueda = conteobusqueda -1;
-    Interpretarzonas(String(aplanartexto(inputElement.value)));
-});
+ });
+ inputElement.addEventListener("keyup", () => {
+  conteobusqueda = conteobusqueda -1;
+  Interpretarzonas(String(aplanartexto(inputElement.value)));
+ });
 }
 
 
@@ -209,7 +211,7 @@ conteo = 0;
 conteolog = 0;
 columna = 0;
 if (!ejecutaragregarciudades) {
-const elements = document.querySelectorAll('div'); // Search only <div> elements
+const elements = document.querySelectorAll('div:not([class*="color"])'); // Search only <div> elements
 elements.forEach(element => {
   conteo++;
 //La linea comentada abajo es util para ver que esta funcionando mal 
@@ -255,16 +257,9 @@ console.log('Busqueda realizada en',conteo,'Divs. Agregadas',conteolog,'ciudades
 
 
 function extendercuadrodebusqueda() {
-var widthtable = document.getElementById('2').offsetWidth;
-console.log(widthtable, formElement.offsetWidth);
-if (formElement.offsetWidth < widthtable) {
-formElement.setAttribute('style', `width:${widthtable}px;`);
-logElement.setAttribute('style', `max-width:${widthtable}px;`);
-}
-else {
-logElement.setAttribute('style', `max-width:100vw;`);
-}
-
+  formElement.setAttribute('style', `width:${24}px;`)
+  var widthtable = document.getElementById('2').scrollWidth, widthtml = document.body.scrollWidth;
+  formElement.setAttribute('style', `width:${widthtml-8}px;`)
 }
 
 
