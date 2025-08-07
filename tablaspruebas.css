@@ -34,7 +34,7 @@ div.tablecolor {
 table {
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 0.9em;
+    font-size: 1.2em;
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -171,10 +171,11 @@ table.avon2 tbody tr td {
 }
 
 html, select, option, textarea {
-    font-size: 12pt;
+    font-size: clamp(12px, 1.171303vw, 40px);
     background: #1c1d22;
     color: white;
 font-family: Segoe UI,BlinkMacSystemFont,-apple-system,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+
 }
 
 .encontrado {
@@ -184,7 +185,10 @@ color: #f0feff;
 
 #busqueda #zona {
 margin-top: 12px;
-font-size: 20px;
+font-size: 1em;
+min-width: 5em;
+width: auto;
+max-width: 50vw;
 }
 
 #busqueda.sticky {
@@ -192,7 +196,6 @@ Background: #1c1d22;
 font-family: monospace;
 position: sticky;
 top: 0px;
-scroll-margin-bottom: 800px;
 }
 
 #busqueda.Transparente, #busqueda.Transparente input {
@@ -208,17 +211,20 @@ input, #busqueda.Transparente input#notransparente {
 Background: #303040;
 Color: #f0feff;
 border-color: #5d5e66;
+font-size: 0.75em;
 }
 
 #busqueda{
-padding-bottom: 4px;
-padding-right: 8px;
+padding: 1px 8px 4px 1px;
+font-size: clamp(15px, 1.25em, 2005px);
 }
-
+#LabelBuscar {
+font-size: 1.25em;
+}
 #busqueda pre {
+margin: 0.1em 0px 0.1em 0.1em;
 overflow-wrap: anywhere;
 white-space: pre-line!important;
-font-size: 20px;
 min-width: 0px;
 max-width: 90vw!important;
 }
@@ -230,3 +236,16 @@ min-width: max-content;
 form:not(#busqueda) {
 margin-bottom: 8px;
 }
+
+
+/*colores para probar 249 por 492
+
+#busqueda pre {
+background-color: brown;
+}
+
+#busqueda.sticky {
+background-color: #3c56db!important;
+}
+
+*/
