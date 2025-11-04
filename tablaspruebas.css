@@ -1,11 +1,16 @@
 input[type="radio"] {
   accent-color: #7490d8;
+  width: 1em;
+  height: 1em;
 }
 #cambiodecss {
     display: flex;
     flex-wrap: wrap;
     min-width: 0px;
     font-size: 1.5em;
+}
+th {
+    white-space: nowrap;
 }
 input[type="radio"], input[type="button"], form[name="Cambiodecss"] label, input[type="submit"] {
     cursor: pointer;
@@ -30,13 +35,17 @@ div.tablecolor {
     width: 0.5em;
     height: 0.5em;
 }
-
+h1 {
+    font-size: 1.8rem;
+}
+html {
+    width: fit-content;
+}
 table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 1.2em;
     font-family: sans-serif;
-    min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -216,19 +225,16 @@ font-size: 0.75em;
 
 #busqueda{
 padding: 1px 8px 4px 1px;
-font-size: clamp(15px, 1.25em, 2005px);
+font-size: clamp(15px, 1.5em, 200px);
 }
 #LabelBuscar {
 font-size: 1.25em;
 }
-#busqueda pre {
-margin: 0.1em 0px 0.1em 0.1em;
-overflow-wrap: anywhere;
-white-space: pre-line!important;
-min-width: 0px;
-max-width: 90vw!important;
+#busqueda pre#tecsto {
+    margin: 0.1em 0px 0.1em 0.1em;
+    white-space: pre-line;
+    max-width: 70vw;
 }
-
 form {
 min-width: max-content;
 }
@@ -236,8 +242,17 @@ min-width: max-content;
 form:not(#busqueda) {
 margin-bottom: 8px;
 }
-
-
+@media (orientation:portrait) {
+	html, select, option, textarea {
+	  font-size: clamp(12px, 5vw, 40px);
+	}
+	#busqueda pre#tecsto {
+	    max-width: 100vw;
+	}
+	table {
+	  font-size: 0.9em;
+	}
+}
 /*colores para probar 249 por 492
 
 #busqueda pre {
