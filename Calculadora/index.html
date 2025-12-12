@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<HTML lang="en-US">
+<HEAD>
+<meta name="viewport" content="width=device-width, interactive-widget=overlays-content">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="./favicon.ico">
+
+
+<TITLE>Mayoreo a Folleto</TITLE>
+<script charset="utf-8">
+var
+precioFolleto,
+precioFolletoFinal,
+precioMayoreo,
+precioMayoreoDesdeFolleto,
+precioFolletoDesdeMayoreo;
+
+document.addEventListener("DOMContentLoaded", (event) => {
+const inputMayoreo = document.getElementById('inputMayoreo');
+const inputFolleto = document.getElementById('inputFolleto');
+const mayoreoLog = document.getElementById('mayoreoLog');
+const folletoLog = document.getElementById('folletoLog');
+ inputFolleto.addEventListener("keyup", (event) => {
+  CalcularFolleto();
+ });
+ inputMayoreo.addEventListener("keyup", (event) => {
+  CalcularMayoreo();
+ });
+});
+
+function CalcularMayoreo() {
+precioMayoreo = inputMayoreo.value;
+precioFolletoDesdeMayoreo = precioMayoreo * 1.657142857142857;
+precioFolletoDesdeMayoreo = Math.ceil(precioFolletoDesdeMayoreo)
+mayoreoLog.textContent=`Precio folleto calculado:\n${precioFolletoDesdeMayoreo}`
+}
+
+function CalcularFolleto() {
+precioFolleto = inputFolleto.value;
+precioFolletoFinal = precioFolleto / 1.65714285714285714;
+precioMayoreoDesdeFolleto = Math.ceil(precioFolletoFinal);
+folletoLog.textContent = `Precio mayoreo calculado:\n${precioMayoreoDesdeFolleto}`
+}
+</script>
+<style>
+html {
+font-size: clamp(12px, 1.171303vw, 40px);
+background: #1c1d22;
+color: white;
+font-family: Segoe UI,BlinkMacSystemFont,-apple-system,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+body {
+  display: grid;
+  width: fit-content;
+  height: fit-content;
+  justify-items: center;
+  font-size: 3em;
+}
+body > * {
+font-size: 1em;
+}
+input, p {
+  max-width: 85vw;
+  white-space: break-spaces;
+}
+input {
+  background: #303040;
+  color: #f0feff;
+  border-color: #5d5e66;
+  text-align: center;
+}
+</style>
+</HEAD>
+<body>
+<label for="inputMayoreo">Precio mayoreo</label>
+<input type="text" inputmode="numeric" id="inputMayoreo">
+<p id="mayoreoLog">Precio folleto calculado:
+0</p>
+<label for="inputFolleto">Precio folleto</label>
+<input type="text" inputmode="numeric" id="inputFolleto">
+<p id="folletoLog">Precio mayoreo calculado:
+0</p>
+</body>
+</HTML>
