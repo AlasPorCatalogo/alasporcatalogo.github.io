@@ -8,6 +8,26 @@ input[type="radio"] {
     flex-wrap: wrap;
     min-width: 0px;
     font-size: 1.5em;
+    gap: 0.5em;
+}
+a[href^="https://wa.me"] {
+  color: #25d366;
+}
+
+a[href^="https://wa.me"] + a[href^="https://wa.me"] {
+  margin-left: 3px;
+}
+
+a[href^="https://wa.me"]:after {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%2300db40" viewBox="0 0 16.3 16.3"> <path d="M8.043 0C3.61 0 0 3.603 0 8.036q-.012 2.056 1.045 3.974L-.119 16.27l4.354-1.14q1.704.931 3.8.957A1 1 0 008.043 0ZM8.035 1.577a1 1 0 010 12.919q-1.994-.028-3.562-1.06l-2.343.609.625-2.288q-1.142-1.37-1.18-3.72a6.46 6.46 0 016.46-6.46ZM10.22 9.081c.182.064 1.148.539 1.346.641.198.103.333.15.38.23.048.08.048.475-.119.934s-.95.879-1.33.934c-.34.048-.768.072-1.242-.079A12 12 0 018.13 11.329c-1.979-.854-3.27-2.842-3.364-2.976-.103-.143-.8-1.069-.8-2.035s.507-1.448.689-1.646a.72.72 0 01.522-.246h.38c.12 0 .285-.047.444.34.166.396.562 1.362.61 1.465a.38.38 0 01.015.349c-.063.134-.095.213-.198.324a8 8 0 01-.293.348c-.095.095-.198.206-.087.404.119.198.507.84 1.093 1.362.752.673 1.385.879 1.583.974s.309.079.428-.048c.118-.135.49-.578.625-.776s.261-.166.443-.095"></path></svg>');
+  content: '';
+  font-size: 70%;
+  margin-inline: 3px;
+  vertical-align: top;
+  width: 1em;
+  height: 1.05em;
+  display: inline-block;
+  background-repeat: no-repeat;
 }
 th {
     white-space: nowrap;
@@ -52,7 +72,9 @@ table {
 table tbody tr td div, table thead tr th div {
     text-align: center;
 }
-
+table tbody tr td div p {
+ margin: 0;
+}
 table.VerdeBN {
     border: 3px solid #009879;
 }
@@ -183,6 +205,7 @@ html, select, option, textarea {
     font-size: clamp(12px, 1.171303vw, 40px);
     background: #1c1d22;
     color: white;
+    color-scheme: dark;
 font-family: Segoe UI,BlinkMacSystemFont,-apple-system,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 
 }
@@ -190,6 +213,14 @@ font-family: Segoe UI,BlinkMacSystemFont,-apple-system,Roboto,Oxygen,Ubuntu,Cant
 .encontrado {
 background-color: #1c1d22;
 color: #f0feff;
+}
+
+.SinTelefonos .Telefono {
+  display: none;
+}
+
+.SinCiudades .Ciudad {
+  display: none;
 }
 
 #busqueda #zona {
