@@ -434,7 +434,7 @@ function mostrarzona(zona = 'error interno', modociudad = false) {
   Notacelda = ZonaElementoHTML.title;
   if(ZonaElementoHTML.tagName == 'TD' || ZonaElementoHTML.tagName == 'TH') {
    Bloque = ZonaElementoHTML.closest('table').id;
-   DiaCierre =  document.querySelector(`[id="${Bloque}"] th[data-dia-de-cierre="${CeldaElemento.dataset.diaDeCierre}"]`).id;
+   DiaCierre =  document.querySelector(`[id="${Bloque}"] th[data-dia-de-cierre="${ZonaElementoHTML.dataset.diaDeCierre}"]`).id;
   }
  }
  else {
@@ -2077,5 +2077,6 @@ function mathRandomInt(a, b) {
   }
   return Math.floor(Math.random() * (b - a + 1) + a);
 }
+
 
 
