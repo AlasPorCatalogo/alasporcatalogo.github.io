@@ -508,6 +508,9 @@ function aplanartexto(TextoaAplanar, Textoaplanado = TextoaAplanar) {
 //thanks for this code to Niall Maher (https://www.codu.co/articles/remove-accents-from-a-javascript-string-skgp1inb)
  Textoaplanado = TextoaAplanar.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
  Textoaplanado = Textoaplanado.toLowerCase();
+ if (Textoaplanado != ' ') {
+  Textoaplanado = Textoaplanado.trim();
+ }
  if (inputElement.inputMode == 'text') {
   var rb = 0;
   while (!/[a-z]/.test(Textoaplanado.slice(-1)) && Textoaplanado.length > 1)/*revisa el ultimo caracter para ver si no es una letra minúscula*/ {
@@ -2053,7 +2056,7 @@ const NuevaListaDeZonas = {
   "Ambos": 201,
   "Ciudad": 42,
   "Telefono": 124,
-  "Zonas": 364
+  "Zonas": 367
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
@@ -2077,6 +2080,5 @@ function mathRandomInt(a, b) {
   }
   return Math.floor(Math.random() * (b - a + 1) + a);
 }
-
 
 
