@@ -761,7 +761,7 @@ const NuevaListaDeZonas = {
   Telefono: "6251640219"
  },
  "3-48": {
-  Ciudad: "Cd. Juarez, Chihuahua",
+  Ciudad: "Cd. Juarez y Chihuahua y Aquiles Serdan, Chihuahua",
   Telefono: "6145974002"
  },
  "4-26": {
@@ -787,6 +787,10 @@ const NuevaListaDeZonas = {
  "4-33": {
   Ciudad: "Nogales, Sonora",
   Telefono: "6311679226"
+ },
+ "4-34": {
+  Ciudad: "Sonoyta, Sonora",
+  Telefono: ""
  },
  "4-35": {
   Ciudad: "Agua Prieta, Sonora",
@@ -1453,7 +1457,7 @@ const NuevaListaDeZonas = {
   Telefono: ["5617537361","5544580283"]
  },
  "14-58": {
-  Ciudad: "Nezahualcóyotl, EdoMex",
+  Ciudad: "Iztapalapa y Nezahualcóyotl, EdoMex",
   Telefono: "5579218198"
  },
  "14-61": {
@@ -1565,7 +1569,7 @@ const NuevaListaDeZonas = {
   Telefono: "2227082250"
  },
  "17-17": {
-  Ciudad: "Rafael Lara Grajales, San Nicolas Buenos Aires, Puebla",
+  Ciudad: "Rafael Lara Grajales y Puebla de Zaragoza y San Nicolas Buenos Aires, Puebla",
   Telefono: "2471745418"
  },
  "17-18": {
@@ -1633,7 +1637,7 @@ const NuevaListaDeZonas = {
   Telefono: ""
  },
  "18-29": {
-  Ciudad: "Chocaman, Veracruz",
+  Ciudad: "Chocaman y Fortin, Veracruz",
   Telefono: "2711225107"
  },
  "18-34": {
@@ -2049,12 +2053,12 @@ const NuevaListaDeZonas = {
   Telefono: "9711212867"
  },
  "29-14": {
-  Ciudad: "San Juan Guichicovi, Oaxaca",
+  Ciudad: "San Juan Guichicovi y San Pedro Comitancillo, Oaxaca",
   Telefono: "9633552856"
  },
  length: {
   "Ambos": 201,
-  "Ciudad": 42,
+  "Ciudad": 43,
   "Telefono": 124,
   "Zonas": 367
  }
