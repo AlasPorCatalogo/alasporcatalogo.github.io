@@ -729,7 +729,7 @@ const NuevaListaDeZonas = {
   Telefono: "6565942126"
  },
  "3-17": {
-  Ciudad: "Chihuahua, Chihuahua",
+  Ciudad: "Chihuahua, Aldama, Chihuahua",
   Telefono: "6143843841"
  },
  "3-20": {
@@ -1589,7 +1589,7 @@ const NuevaListaDeZonas = {
   Telefono: "2225077672"
  },
  "17-34": {
-  Ciudad: "Puebla, Puebla",
+  Ciudad: "Puebla, Cuautlancingo, Puebla",
   Telefono: "2211616987"
  },
  "17-35": {
@@ -1645,7 +1645,7 @@ const NuevaListaDeZonas = {
   Telefono: "2721881049"
  },
  "18-39": {
-  Ciudad: "Cordoba, Veracruz",
+  Ciudad: "Cordoba, Cortazar, Veracruz",
   Telefono: "3541016858"
  },
  "18-40": {
@@ -2060,7 +2060,7 @@ const NuevaListaDeZonas = {
   "Ambos": 201,
   "Ciudad": 43,
   "Telefono": 124,
-  "Zonas": 367
+  "Zonas": 368
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
