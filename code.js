@@ -745,7 +745,7 @@ const NuevaListaDeZonas = {
   Telefono: "6361234591"
  },
  "3-31": {
-  Ciudad: "Cd. Juarez, Chihuahua",
+  Ciudad: "Cd. Juarez, Chihuahua, Chihuahua",
   Telefono: "6565923463"
  },
  "3-32": {
@@ -869,7 +869,7 @@ const NuevaListaDeZonas = {
   Telefono: "3330157521"
  },
  "6-07": {
-  Ciudad: "Zapopan, Jalisco",
+  Ciudad: "Zapopan, Tesistan, Jalisco",
   Telefono: "3316246527"
  },
  "6-09": {
@@ -1069,7 +1069,7 @@ const NuevaListaDeZonas = {
   Telefono: "3319645903"
  },
  "8-20": {
-  Ciudad: "Tizapan El Alto, Jalisco",
+  Ciudad: "Tizapan El Alto, Tlajomulco, Jalisco",
   Telefono: "3314606636"
  },
  "8-23": {
@@ -1323,6 +1323,10 @@ const NuevaListaDeZonas = {
  "11-41": {
   Ciudad: "Atizapan de Zaragoza, Adolfo Lopez Mateos, EdoMex",
   Telefono: "5531882612"
+ },
+ "11-51": {
+ 	Ciudad: "Teotihuacan, EdoMex",
+ 	Telefono: ""
  },
  "11-52": {
   Ciudad: "Atenco, EdoMex",
@@ -1724,6 +1728,10 @@ const NuevaListaDeZonas = {
   Ciudad: "San Luis Potosi, San Luis Potosi",
   Telefono: "4441158834"
  },
+ "21-30": {
+ 	Ciudad: "Aguascalientes, Aguascalientes",
+ 	Telefono: ""
+ },
  "21-29": {
   Ciudad: "Calvillo, Aguascalientes",
   Telefono: ""
@@ -2058,9 +2066,9 @@ const NuevaListaDeZonas = {
  },
  length: {
   "Ambos": 201,
-  "Ciudad": 43,
+  "Ciudad": 45,
   "Telefono": 124,
-  "Zonas": 368
+  "Zonas": 370
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
