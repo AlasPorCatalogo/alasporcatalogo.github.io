@@ -736,6 +736,10 @@ const NuevaListaDeZonas = {
   Ciudad: "Meoqui, Chihuahua",
   Telefono: "6481090058"
  },
+ "3-21": {
+ 	Ciudad: "Chihuahua, Chihuahua",
+ 	Telefono: ""
+ },
  "3-22": {
   Ciudad: "",
   Telefono: "6275174538"
@@ -745,7 +749,7 @@ const NuevaListaDeZonas = {
   Telefono: "6361234591"
  },
  "3-31": {
-  Ciudad: "Cd. Juarez, Chihuahua, Chihuahua",
+  Ciudad: "Cd. Juarez, Chihuahua",
   Telefono: "6565923463"
  },
  "3-32": {
