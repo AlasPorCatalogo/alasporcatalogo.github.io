@@ -1041,7 +1041,7 @@ const NuevaListaDeZonas = {
   Telefono: "3315185425"
  },
  "8-04": {
-  Ciudad: "",
+  Ciudad: "Tlaquepaque, Jalisco",
   Telefono: "3325987405"
  },
  "8-05": {
@@ -2069,10 +2069,10 @@ const NuevaListaDeZonas = {
   Telefono: "9633552856"
  },
  length: {
-  "Ambos": 201,
-  "Ciudad": 45,
-  "Telefono": 124,
-  "Zonas": 370
+  "Ambos": 202,
+  "Ciudad": 46,
+  "Telefono": 123,
+  "Zonas": 371
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
