@@ -644,6 +644,10 @@ const NuevaListaDeZonas = {
   Ciudad: "Matamoros, Tamaulipas",
   Telefono: "8948826277"
  },
+ "1-41": {
+  Ciudad: "Reynosa, Tamaulipas",
+  Telefono: ""
+ },
  "1-44": {
   Ciudad: "",
   Telefono: "8341186223"
@@ -693,7 +697,7 @@ const NuevaListaDeZonas = {
   Telefono: "8116832607"
  },
  "2-29": {
-  Ciudad: "Salinas Victoria, Nuevo Leon",
+  Ciudad: "Salinas Victoria, El Carmen, Hidalgo, Nuevo Leon",
   Telefono: "8131056770"
  },
  "2-37": {
@@ -1472,6 +1476,10 @@ const NuevaListaDeZonas = {
   Ciudad: "Iztapalapa, CdMx",
   Telefono: ""
  },
+ "14-62": {
+  Ciudad: "Iztapalapa, Cdmx",
+  Telefono: ""
+ },
  "14-67": {
   Ciudad: "Xochimilco, Mexico",
   Telefono: ""
@@ -1653,7 +1661,7 @@ const NuevaListaDeZonas = {
   Telefono: "2721881049"
  },
  "18-39": {
-  Ciudad: "Cordoba, Cortazar, Veracruz",
+  Ciudad: "Cordoba, Cortazar, Cuichapa, Veracruz",
   Telefono: "3541016858"
  },
  "18-40": {
@@ -1689,7 +1697,7 @@ const NuevaListaDeZonas = {
   Telefono: "5527744368"
  },
  "19-15": {
-  Ciudad: "Naucalpan, EdoMex",
+  Ciudad: "Naucalpan, Huixquilucan, EdoMex",
   Telefono: "5537539700"
  },
  "19-16": {
@@ -1725,7 +1733,7 @@ const NuevaListaDeZonas = {
   Telefono: ""
  },
  "21-24": {
-  Ciudad: "",
+  Ciudad: "San Luis Potosi",
   Telefono: "4443853923"
  },
  "21-28": {
@@ -1761,7 +1769,7 @@ const NuevaListaDeZonas = {
   Telefono: "4442241569"
  },
  "21-47": {
-  Ciudad: "",
+  Ciudad: "Jesus Maria, Aguascalientes",
   Telefono: "4491898082"
  },
  "21-48": {
@@ -1880,6 +1888,10 @@ const NuevaListaDeZonas = {
   Ciudad: "Sabinas, Coahuila",
   Telefono: ""
  },
+ "23-20": {
+  Ciudad: "Sabinas, Coahuila",
+  Telefono: ""
+ },
  "23-22": {
   Ciudad: "Acuña, Coahuila",
   Telefono: "8771133409"
@@ -1909,7 +1921,7 @@ const NuevaListaDeZonas = {
   Telefono: ""
  },
  "27-21": {
-  Ciudad: "Navojoa, Sonora",
+  Ciudad: "Navojoa, Etchojoa, Sonora",
   Telefono: ""
  },
  "27-22": {
@@ -2005,7 +2017,7 @@ const NuevaListaDeZonas = {
   Telefono: "2284037390"
  },
  "28-14": {
-  Ciudad: "Xalapa, Veracruz",
+  Ciudad: "Xalapa, Misantla, Veracruz",
   Telefono: ""
  },
  "28-15": {
@@ -2069,10 +2081,10 @@ const NuevaListaDeZonas = {
   Telefono: "9633552856"
  },
  length: {
-  "Ambos": 202,
-  "Ciudad": 46,
-  "Telefono": 123,
-  "Zonas": 371
+  "Ambos": 204,
+  "Ciudad": 49,
+  "Telefono": 121,
+  "Zonas": 374
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
