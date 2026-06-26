@@ -1204,6 +1204,10 @@ const NuevaListaDeZonas = {
   Ciudad: "Leon, Guanajuato",
   Telefono: "4771120072"
  },
+ "10-21": {
+ 	Ciudad: "Salamanca, Guanajuato",
+ 	Telefono: ""
+ },
  "10-22": {
   Ciudad: "Abasolo, Guanajuato",
   Telefono: ""
@@ -1289,7 +1293,7 @@ const NuevaListaDeZonas = {
   Telefono: "7717000614"
  },
  "11-17": {
-  Ciudad: "",
+  Ciudad: "Zacualtipan de Angeles, Hidalgo",
   Telefono: "7712053625"
  },
  "11-18": {
@@ -1445,7 +1449,7 @@ const NuevaListaDeZonas = {
   Telefono: "5541834347"
  },
  "14-47": {
-  Ciudad: "",
+  Ciudad: "Ecatepec, EdoMex",
   Telefono: "5512704693"
  },
  "14-49": {
@@ -1589,7 +1593,7 @@ const NuevaListaDeZonas = {
   Telefono: "2471745418"
  },
  "17-18": {
-  Ciudad: "",
+  Ciudad: "Puebla, Puebla",
   Telefono: "2224354829"
  },
  "17-28": {
@@ -1865,7 +1869,7 @@ const NuevaListaDeZonas = {
   Telefono: "8118146596"
  },
  "23-04": {
-  Ciudad: "",
+  Ciudad: "Monterrey, Nuevo Leon",
   Telefono: "8125402506"
  },
  "23-05": {
@@ -2081,10 +2085,10 @@ const NuevaListaDeZonas = {
   Telefono: "9633552856"
  },
  length: {
-  "Ambos": 204,
-  "Ciudad": 49,
-  "Telefono": 121,
-  "Zonas": 374
+  "Ambos": 208,
+  "Ciudad": 50,
+  "Telefono": 117,
+  "Zonas": 375
  }
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
