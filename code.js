@@ -901,7 +901,7 @@ const NuevaListaDeZonas = {
   Telefono: "3312965880"
  },
  "6-14": {
-  Ciudad: "",
+  Ciudad: "Zapopan, Jalisco",
   Telefono: "3310468339"
  },
  "6-15": {
@@ -1429,7 +1429,7 @@ const NuevaListaDeZonas = {
   Telefono: "5580367324"
  },
  "14-05": {
-  Ciudad: "Ixtapaluca, EdoMex",
+  Ciudad: "Ixtapaluca, Chalco, EdoMex",
   Telefono: ""
  },
  "14-10": {
@@ -1861,7 +1861,7 @@ const NuevaListaDeZonas = {
   Telefono: "8120247644"
  },
  "23-02": {
-  Ciudad: "San Pedro Garza Garcia, Nuevo Leon",
+  Ciudad: "San Pedro Garza Garcia, Monterrey, Nuevo Leon",
   Telefono: ""
  },
  "23-03": {
@@ -1894,6 +1894,10 @@ const NuevaListaDeZonas = {
  },
  "23-20": {
   Ciudad: "Sabinas, Coahuila",
+  Telefono: ""
+ },
+ "23-21": {
+  Ciudad: "Piedras Negras, Coahuila",
   Telefono: ""
  },
  "23-22": {
@@ -1965,7 +1969,7 @@ const NuevaListaDeZonas = {
   Telefono: "6672045739"
  },
  "27-32": {
-  Ciudad: "",
+  Ciudad: "Culiacan, Sinaloa",
   Telefono: "6971110195"
  },
  "27-33": {
@@ -2085,9 +2089,9 @@ const NuevaListaDeZonas = {
   Telefono: "9633552856"
  },
  length: {
-  "Ambos": 208,
-  "Ciudad": 50,
-  "Telefono": 117,
+  "Ambos": 210,
+  "Ciudad": 51,
+  "Telefono": 115,
   "Zonas": 375
  }
 }
