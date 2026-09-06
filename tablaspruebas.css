@@ -2,8 +2,24 @@
     navigation: auto;
 }
 
+/*
+::view-transition-old(root) {
+    animation: 0.4s ease-in both move-out;
+
+}
+*/
+
 ::view-transition-new(root) {
     animation-delay: 0.1s;
+}
+
+span.Informacion {
+	color: #3986ac;
+}
+
+span.FechaCalculada {
+	white-space: nowrap;
+	color: #97b8f2;
 }
 
 input[type="radio"] {
@@ -37,6 +53,15 @@ a[href^="https://wa.me"]:after {
   display: inline-block;
   background-repeat: no-repeat;
 }
+
+.Transparente a[href^="https://wa.me"] {
+  color: transparent;
+}
+
+.Transparente a[href^="https://wa.me"]::after {
+  display: none;
+}
+
 th {
     white-space: nowrap;
 }
@@ -223,11 +248,7 @@ background-color: #1c1d22;
 color: #f0feff;
 }
 
-.SinTelefonos .Telefono {
-  display: none;
-}
-
-.SinCiudades .Ciudad {
+.SinRepartos .Reparto, .SinTelefonos .Telefono, .SinCiudades .Ciudad {
   display: none;
 }
 
