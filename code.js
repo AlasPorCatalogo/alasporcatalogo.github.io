@@ -2,7 +2,7 @@ var listazonas,
  listaciudades,
  CeldaElemento,
  TextoDiv,
- AgregarCiudadesYaEjecutado,
+ AgregarDetallesDeZonasYaEjecutado,
  logElement,
  ZonaNoEncontrada,
  formElement,
@@ -22,28 +22,46 @@ var listazonas,
  ConteoBusquedaCiudadesActual,
  TextoMostradoUltimaCiudadBuscada,
  debug,
- consejos;
+ consejos,
+ DateOptions = {day: "numeric",month: "short",year:"2-digit"};
 document.addEventListener("DOMContentLoaded", (event) => {
 // Page has loaded
   definicionvariables();
   ManejarLocalStorage();
-  agregarciudades();
+  AgregarDetallesDeZonas();
 });
 
 function ManejarLocalStorage() {
- const QuitarTelefonos=document.createElement('input');
- QuitarTelefonos.type='button';
- const QuitarCiudades=QuitarTelefonos.cloneNode(true);
- QuitarTelefonos.id="QuitarTelefonos";
- QuitarCiudades.id="QuitarCiudades";
- QuitarTelefonos.value="Quitar teléfonos de la tabla";
- QuitarCiudades.value="Quitar ciudades de la tabla";
- FormCSS=document.querySelector('form[name="Cambiodecss"]');
+ function QuitarCosasDeLaTabla(Evento,Sufijo,Texto,Clase) {
+  if (localStorage.getItem(`AxC${Sufijo}`) === null) {
+   localStorage.setItem(`AxC${Sufijo}`,"true");
+   document.documentElement.classList.add(Clase);
+   Evento.currentTarget.value = `Añadir ${Texto} a la tabla`
+  }
+  else {
+   localStorage.removeItem(`AxC${Sufijo}`);
+   document.documentElement.classList.remove(Clase);
+   Evento.currentTarget.value = `Quitar ${Texto} de la tabla`
+ 	}
+ }
+ const QuitarTelefonos = document.createElement('input');
+ QuitarTelefonos.type = 'button';
+ const QuitarCiudades = QuitarTelefonos.cloneNode(true),
+ 	QuitarRepartos = QuitarTelefonos.cloneNode(true);
+ QuitarTelefonos.id = "QuitarTelefonos";
+ QuitarCiudades.id = "QuitarCiudades";
+ QuitarRepartos.id = "QuitarReparto";
+ QuitarTelefonos.value = "Quitar teléfonos de la tabla";
+ QuitarCiudades.value = "Quitar ciudades de la tabla";
+ QuitarRepartos.value = "Quitar días de reparto de la tabla";
+ FormCSS = document.querySelector('form[name="Cambiodecss"]');
  FormCSS.appendChild(QuitarCiudades);
  FormCSS.appendChild(QuitarTelefonos);
+ FormCSS.appendChild(QuitarRepartos);
  let AxCTablas = localStorage.getItem("AxCTablas"),
- AxCTelefonos = localStorage.getItem("AxCTelefonos"),
- AxCCiudades = localStorage.getItem("AxCCiudades");
+ 	AxCTelefonos = localStorage.getItem("AxCTelefonos"),
+ 	AxCCiudades = localStorage.getItem("AxCCiudades"),
+ 	AxCRepartos = localStorage.getItem("AxCRepartos");
  if (AxCTablas !== null) {
   cambiarcss(AxCTablas,'table',3,0);
   let RadioButton = document.getElementById(AxCTablas)
@@ -63,30 +81,9 @@ function ManejarLocalStorage() {
   QuitarCiudades.value = 'Añadir ciudades a la tabla';
   document.documentElement.classList.add("SinCiudades")
  }
- QuitarCiudades.addEventListener("click", (Event) => {
-  if (localStorage.getItem("AxCCiudades") === null) {
-   localStorage.setItem("AxCCiudades","true");
-   document.documentElement.classList.add("SinCiudades");
-   QuitarCiudades.value = 'Añadir ciudades a la tabla';
-  }
-  else {
-   localStorage.removeItem("AxCCiudades");
-   QuitarCiudades.value = 'Quitar ciudades de la tabla';
-   document.documentElement.classList.remove("SinCiudades");
-  }
- });
- QuitarTelefonos.addEventListener("click", (Event) => {
-  if (localStorage.getItem("AxCTelefonos") === null) {
-   localStorage.setItem("AxCTelefonos","true");
-   document.documentElement.classList.add("SinTelefonos");
-   QuitarTelefonos.value = 'Añadir teléfonos a la tabla'
-  }
-  else {
-   localStorage.removeItem("AxCTelefonos");
-   document.documentElement.classList.remove("SinTelefonos");
-   QuitarTelefonos.value = 'Quitar teléfonos de la tabla'
-  }
- });
+ QuitarCiudades.addEventListener("click", (Event)=>{QuitarCosasDeLaTabla(Event,"Ciudades","ciudades","SinCiudades")});
+ QuitarTelefonos.addEventListener("click", (Event)=>{QuitarCosasDeLaTabla(Event,"Telefonos","teléfonos","SinTelefonos")});
+ QuitarRepartos.addEventListener("click", (Event) => {QuitarCosasDeLaTabla(Event,"Repartos","días de reparto","SinRepartos")});
 }
 
 function definicionvariables() {
@@ -221,7 +218,7 @@ function BuscadorCiudades(CiudadBuscada) {
    }
   }
   if (UltimaCiudadBuscada != aplanartexto(inputElement.value)) {
-   TextoMostradoUltimaCiudadBuscada = logElement.innerText;
+   TextoMostradoUltimaCiudadBuscada = logElement.innerHTML;
   }
   ListaZonasEncontradas.forEach(zonaactual => {
    encontrarcelda(zonaactual,false);
@@ -290,16 +287,19 @@ function cambiarcss(NombreDeClase, NombreElemento, LimiteConteoCSS, ConteoCSSTab
 }
 
 
-function agregarciudades() {
+function AgregarDetallesDeZonas() {
  let CeldasVisitadas = 0,
   CiudadesAgregadas = 0,
   TelefonosAgregados = 0,
+  RepartosAgregados = 0,
   Columna = 0,
   PCiudad = document.createElement('p'),
-  PTelefono = document.createElement('p');
+  PTelefono = document.createElement('p'),
+  PReparto = document.createElement('p');
  PCiudad.className = "Ciudad";
  PTelefono.className = "Telefono";
- if (!AgregarCiudadesYaEjecutado) {
+ PReparto.className = "Reparto";
+ if (!AgregarDetallesDeZonasYaEjecutado) {
   const Celdas = document.querySelectorAll('div:not([class*="color"])'); //Seleccionar solo los elementos <div> dentro de la tabla
   Celdas.forEach(Div => {
    CeldasVisitadas++;
@@ -322,25 +322,32 @@ function agregarciudades() {
    CeldaElemento.id = TextoDiv;
    if (NuevaListaDeZonas[TextoDiv] !== undefined) {
     let Zona = NuevaListaDeZonas[TextoDiv];
-    if (Zona.Ciudad != '') {
+    if (Zona.Ciudad != "") {
      CiudadesAgregadas++;
      let ElementoCiudad = PCiudad.cloneNode();
      ElementoCiudad.textContent = Zona.Ciudad;
      Div.appendChild(ElementoCiudad);
     }
-    if (Zona.Telefono != '') {
+    if (Zona.Telefono != "") {
      TelefonosAgregados++;
      let ElementoTelefono = PTelefono.cloneNode();
      ElementoTelefono.textContent = Zona.Telefono;
      Div.appendChild(ElementoTelefono);
     }
+    if (Zona.Reparto != "") {
+    	RepartosAgregados++;
+    	let ElementoReparto = PReparto.cloneNode();
+    	ElementoReparto.textContent = `${Zona.Reparto} Días`;
+    	Div.appendChild(ElementoReparto);
+    }
    }
   });
  }
- AgregarCiudadesYaEjecutado = true;
+ AgregarDetallesDeZonasYaEjecutado = true;
  `Busqueda realizada en ${CeldasVisitadas} Celdas. Agregadas ${CiudadesAgregadas} ciudades de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`;
  console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregadas ${CiudadesAgregadas} ciudades de ${NuevaListaDeZonas.length.Ciudad+NuevaListaDeZonas.length.Ambos} disponibles`);
  console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${TelefonosAgregados} telefonos de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`);
+ console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${RepartosAgregados} telefonos de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`);
 }
 
 //Parte visual de los buscadores
@@ -411,7 +418,7 @@ function Interpretarzonas(Zona) {
  }
  if (inputElement.inputMode == 'text') {
   if (UltimaCiudadBuscada != aplanartexto(inputElement.value)) {
-   logElement.innerText = `Buscar ciudad: ${Zona}`;
+   logElement.innerHTML = `<span class="Informacion">Buscar ciudad:</span> ${Zona}`;
   }
  }
 }
@@ -423,10 +430,10 @@ function mostrarzona(zona = 'error interno', modociudad = false) {
   console.log (`"${zona}"`, 'mostrarzona()');
  }
  if (!modociudad) {
-  logElement.innerText = `Zona: ${zona}`;
+  logElement.innerHTML = `<span class="Informacion">Zona:</span> ${zona}`;
  }
  else if (modociudad) {
-  logElement.innerHTML = `${TextoMostradoUltimaCiudadBuscada} \n${ConteoBusquedaCiudadesActual}/${LongitudBusquedaCiudadesActual}\nZona: ${zona}`;
+  logElement.innerHTML = `${TextoMostradoUltimaCiudadBuscada} \n${ConteoBusquedaCiudadesActual}/${LongitudBusquedaCiudadesActual}\n<span class="Informacion">Zona:</span> ${zona}`;
  }
  ScrollArribaOCentro = 'center';
  ZonaElementoHTML = document.getElementById(zona);
@@ -443,15 +450,15 @@ function mostrarzona(zona = 'error interno', modociudad = false) {
  if (NuevaListaDeZonas[zona] !== undefined) {
   if (NuevaListaDeZonas[zona].Ciudad !== "") {
    let Ciudad = NuevaListaDeZonas[zona].Ciudad;
-   logElement.innerHTML += `${SaltoDeLinea}Ciudad: ${Ciudad}`;
+   logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Ciudad:</span> ${Ciudad}`;
   }
   if (NuevaListaDeZonas[zona].Telefono !== "") {
    if (!Array.isArray(NuevaListaDeZonas[zona].Telefono)) {
     let Telefono = NuevaListaDeZonas[zona].Telefono;
-    logElement.innerHTML += `${SaltoDeLinea}Telefono: <a href="https://wa.me/+52${Telefono}">${Telefono}</a>`;
+    logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Telefono:</span> <a href="https://wa.me/+52${Telefono}">${Telefono}</a>`;
    }
    else {
-    logElement.innerHTML += `${SaltoDeLinea}Telefono: `
+    logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Telefono:</span> `
     NuevaListaDeZonas[zona].Telefono.forEach(Telefono => {
      logElement.innerHTML += `<a href="https://wa.me/+52${Telefono}">${Telefono}</a>`;
     });
@@ -459,13 +466,30 @@ function mostrarzona(zona = 'error interno', modociudad = false) {
   }
  }
  if (Bloque != undefined) {
-  logElement.innerHTML += `${SaltoDeLinea}Bloque: ${Bloque}`;
+  logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Bloque:</span> ${Bloque}`;
  }
  if (DiaCierre != undefined) {
-  logElement.innerHTML += `${SaltoDeLinea}Día de cierre: ${DiaCierre}`
+  logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Día de cierre:</span> ${DiaCierre}`
+ }
+ if (NuevaListaDeZonas[zona] !== undefined) {
+  if (NuevaListaDeZonas[zona].Reparto !== "") {
+  	let Reparto = NuevaListaDeZonas[zona].Reparto,
+  	FechaReparto = new Date(DiaCierre.replace("ene","jan").replace("abr","apr").replace("ago","aug").replace("dic","dec")),
+  	ArrayRango = Reparto.split("-").map(Dia => Number(Dia)),
+  	FechaMinimaDeReparto = new Date(FechaReparto.setDate(FechaReparto.getDate() + ArrayRango[0]));
+  	if (ArrayRango.length > 1) {
+	  	FechaMaximaDeReparto = new Date(FechaReparto.setDate(FechaReparto.getDate() + (ArrayRango[1] - ArrayRango[0]))),
+	   CalculatedDates = `<span class="FechaCalculada">${FechaMinimaDeReparto.toLocaleString("la",DateOptions).replaceAll(" ","-")}/${FechaMaximaDeReparto.toLocaleString("la",DateOptions).replaceAll(" ","-")}</span>`;
+	  	logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Reparto:</span> De ${Reparto} días después del cierre ${CalculatedDates}`
+  	}
+  	else {
+  		CalculatedDates = `<span class="FechaCalculada">${FechaMinimaDeReparto.toLocaleString("la",DateOptions).replaceAll(" ","-")}</span>`;
+  		logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Reparto:</span> ${Reparto} días después del cierre ${CalculatedDates}`
+  	}
+  }
  }
  if (Notacelda != '') {
-  logElement.innerHTML += `${SaltoDeLinea}${Notacelda}`
+  logElement.innerHTML += `${SaltoDeLinea}<span class="Informacion">Nota:</span> ${Notacelda}`
  }
 }
 
@@ -689,7 +713,8 @@ const NuevaListaDeZonas = {
 	),
 	"2-15": new Zona(
 		"Monterrey, Nuevo Leon",
-		"8126329832"
+		"8126329832",
+		"7"
 	),
 	"2-17": new Zona(
 		"Juarez, Nuevo Leon",
@@ -741,7 +766,8 @@ const NuevaListaDeZonas = {
 	),
 	"3-17": new Zona(
 		"Chihuahua, Aldama, Chihuahua",
-		"6143843841"
+		"6143843841",
+		"8"
 	),
 	"3-20": new Zona(
 		"Meoqui, Chihuahua",
@@ -755,7 +781,7 @@ const NuevaListaDeZonas = {
 		"6275174538"
 	),
 	"3-24": new Zona(
-		"",
+		"Galeana, Chihuahua",
 		"6361234591"
 	),
 	"3-31": new Zona(
@@ -768,15 +794,18 @@ const NuevaListaDeZonas = {
 	),
 	"3-33": new Zona(
 		"Chihuahua, Chihuahua",
-		"6146014458"
+		"6146014458",
+		"9"
 	),
 	"3-35": new Zona(
 		"Cuauhtemoc, Chihuahua",
-		"6251640219"
+		"6251640219",
+		"6-9"
 	),
 	"3-48": new Zona(
 		"Cd. Juarez y Chihuahua y Aquiles Serdan, Chihuahua",
-		"6145974002"
+		"6145974002",
+		"6"
 	),
 	"4-26": new Zona(
 		"Guaymas, Empalme, San Carlos, Sonora",
@@ -1144,8 +1173,9 @@ const NuevaListaDeZonas = {
 		"7861162335"
 	),
 	"9-47": new Zona(
-		"Mexicaltzingo, EdoMex",
-		"7225716126"
+		"Mexicaltzingo, San Antonio la Isla, EdoMex",
+		"7225716126",
+		"4-6"
 	),
 	"9-48": new Zona(
 		"Toluca, EdoMex",
@@ -1315,7 +1345,7 @@ const NuevaListaDeZonas = {
 		"5630037476"
 	),
 	"11-32": new Zona(
-		"",
+		"Cuautitlán Izcalli, EdoMex",
 		"5527092607"
 	),
 	"11-33": new Zona(
@@ -1407,7 +1437,7 @@ const NuevaListaDeZonas = {
 		"6861349537"
 	),
 	"13-44": new Zona(
-		"",
+		"Cardenas, Tabasco",
 		"9371387363"
 	),
 	"13-45": new Zona(
@@ -1422,7 +1452,7 @@ const NuevaListaDeZonas = {
 		"Ixtapaluca, Chalco, EdoMex"
 	),
 	"14-10": new Zona(
-		"Valle de Chalco, EdoMex",
+		"Valle de Chalco, Tláhuac, EdoMex",
 		"5528296727"
 	),
 	"14-42": new Zona(
@@ -1450,8 +1480,9 @@ const NuevaListaDeZonas = {
 		"5537171246"
 	),
 	"14-54": new Zona(
-		"",
-		"5571788409"
+		"Venustiano Carranza, CdMx",
+		"5571788409",
+		"4"
 	),
 	"14-55": new Zona(
 		"Chimalhuacan, EdoMex",
@@ -1475,14 +1506,14 @@ const NuevaListaDeZonas = {
 		"Xochimilco, Mexico"
 	),
 	"14-68": new Zona(
-		"Milpa Alta, CdMx"
+		"Milpa Alta, Tláhuac, CdMx"
 	),
 	"16-11": new Zona(
 		"Benito Juarez, Cancun, Quintana Roo",
 		"9982463454"
 	),
 	"16-12": new Zona(
-		"Othon P. Blanco, Chetumal, Quintana Roo",
+		"Othon P. Blanco, Chetumal, Quintana Roo, Calakmul, Campeche",
 		"9831550928"
 	),
 	"16-13": new Zona(
@@ -1593,7 +1624,8 @@ const NuevaListaDeZonas = {
 	),
 	"17-34": new Zona(
 		"Puebla, Cuautlancingo, Puebla",
-		"2211616987"
+		"2211616987",
+		"5"
 	),
 	"17-35": new Zona(
 		"",
@@ -1628,7 +1660,7 @@ const NuevaListaDeZonas = {
 		"2292101584"
 	),
 	"18-16": new Zona(
-		"Amatlan de los Reyes, Veracruz"
+		"Amatlan de los Reyes, Cordoba, Veracruz"
 	),
 	"18-18": new Zona(
 		"Tlalixcoyan, Veracruz",
@@ -1642,11 +1674,11 @@ const NuevaListaDeZonas = {
 		"2711225107"
 	),
 	"18-34": new Zona(
-		"Atzacan, Veracruz",
+		"Atzacan, Rio Blanco, Veracruz",
 		"2721881049"
 	),
 	"18-39": new Zona(
-		"Cordoba, Cortazar, Cuichapa, Veracruz",
+		"Amatlan de los Reyes, Cordoba, Cortazar, Cuichapa, Veracruz",
 		"3541016858"
 	),
 	"18-40": new Zona(
@@ -1664,11 +1696,11 @@ const NuevaListaDeZonas = {
 		"5527632137"
 	),
 	"19-08": new Zona(
-		"",
+		"Gustavo A. Madero, Cd.Mx",
 		"5537186761"
 	),
 	"19-09": new Zona(
-		"Cuauhtemoc, CdMx",
+		"Venustiano Carranza, Cuauhtemoc, CdMx",
 		["5527771429","5541311287"]
 	),
 	"19-11": new Zona(
@@ -1707,8 +1739,14 @@ const NuevaListaDeZonas = {
 		"5627306375"
 	),
 	"19-42": new Zona(
-		"Nicolas Romero, EdoMex",
-		"5527168429"
+		"Atizapán de Zaragoza, Nicolas Romero, EdoMex",
+		"5527168429",
+		"5"
+	),
+	"19-52": new Zona(
+		"Iztapalapa, CdMx",
+		"",
+		"4"
 	),
 	"19-56": new Zona(
 		"Tlalpan, CdMx"
@@ -1716,6 +1754,9 @@ const NuevaListaDeZonas = {
 	"21-24": new Zona(
 		"San Luis Potosi",
 		"4443853923"
+	),
+	"21-26": new Zona(
+		"San Luis Potosi, San Luis Potosi"
 	),
 	"21-28": new Zona(
 		"San Luis Potosi, San Luis Potosi",
@@ -1755,7 +1796,9 @@ const NuevaListaDeZonas = {
 		"San Luis Potosi, San Luis Potosi"
 	),
 	"21-49": new Zona(
-		"San Luis Potosi, San Luis Potosi"
+		"San Luis Potosi, San Luis Potosi",
+		"",
+		"5"
 	),
 	"21-56": new Zona(
 		"",
@@ -1775,7 +1818,8 @@ const NuevaListaDeZonas = {
 	),
 	"22-03": new Zona(
 		"Acapulco, Guerrero",
-		"7443453102"
+		"7443453102",
+		"5-7"
 	),
 	"22-04": new Zona(
 		"",
@@ -1801,7 +1845,9 @@ const NuevaListaDeZonas = {
 		"7331276119"
 	),
 	"22-23": new Zona(
-		"Tuncingo, Guerrero"
+		"Acapulco, Tuncingo, Guerrero",
+		"",
+		"5-7"
 	),
 	"22-24": new Zona(
 		"Cuautla, Morelos"
@@ -1891,53 +1937,63 @@ const NuevaListaDeZonas = {
 		"6441521633"
 	),
 	"27-20": new Zona(
-		"Obregon, Sonora"
+		"Cd. Obregon, Sonora",
+		"6441468889"
 	),
 	"27-21": new Zona(
-		"Navojoa, Etchojoa, Sonora"
+		"Navojoa, Etchojoa, Sonora",
+		"6421199237"
 	),
 	"27-22": new Zona(
-		"El Fuerte, Sinaloa",
+		"El Fuerte, Los Mochis, Sinaloa",
 		"6688827200"
 	),
 	"27-23": new Zona(
-		"Los Mochis, Sinaloa"
+		"Los Mochis, Sinaloa",
+		"6681510736"
+	),
+	"27-24": new Zona(
+		"Los Mochis, Sinaloa",
+		"6682433168"
 	),
 	"27-25": new Zona(
-		"Guasave, Sinaloa"
+		"Guasave, Sinaloa",
+		"6871250047"
 	),
 	"27-26": new Zona(
-		"Angostura, Sinaloa"
+		"Angostura, Guamuchil, Sinaloa",
+		"6731202828"
 	),
 	"27-27": new Zona(
-		"Navolato, Sinaloa"
+		"Navolato, Culiacán, Sinaloa",
+		"6672335377"
 	),
 	"27-28": new Zona(
-		"",
+		"Mazatlán, Sinaloa",
 		"6691417689"
 	),
 	"27-29": new Zona(
 		"Culiacan, Sinaloa",
-		"6675774318"
+		"6674779850"
 	),
 	"27-30": new Zona(
-		"",
+		"Culiacán, Sinaloa",
 		"6671429864"
 	),
 	"27-31": new Zona(
 		"Culiacan, Sinaloa",
-		"6672045739"
+		"6676300484"
 	),
 	"27-32": new Zona(
 		"Culiacan, Sinaloa",
 		"6971110195"
 	),
 	"27-33": new Zona(
-		"",
+		"Mazatlán, Sinaloa",
 		"6691634776"
 	),
 	"27-34": new Zona(
-		"",
+		"Mazatlán, Sinaloa",
 		"2297802689"
 	),
 	"27-35": new Zona(
@@ -1945,7 +2001,7 @@ const NuevaListaDeZonas = {
 		"6671955434"
 	),
 	"27-36": new Zona(
-		"Bachigualatillo, Sinaloa",
+		"Bachigualatillo, Culiacán, Sinaloa",
 		"6677976369"
 	),
 	"28-01": new Zona(
@@ -1991,7 +2047,7 @@ const NuevaListaDeZonas = {
 		"2282692825"
 	),
 	"28-16": new Zona(
-		"",
+		"Cuitláhuac, Veracruz",
 		"2283057332"
 	),
 	"29-01": new Zona(
