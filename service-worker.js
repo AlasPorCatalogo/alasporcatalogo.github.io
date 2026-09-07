@@ -1,7 +1,7 @@
 //This code is combined from the same google example And from a mozilla example:
 //https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches
-const cacheName = 'cache-v3.0.1';
-const precacheResources = ['index.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
+const cacheName = 'cache-v3.0.1.1';
+const precacheResources = ['/', 'index.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
 
 async function deleteCache(key) {
   await caches.delete(key);
