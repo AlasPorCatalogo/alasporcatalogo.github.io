@@ -23,7 +23,22 @@ var listazonas,
  TextoMostradoUltimaCiudadBuscada,
  debug,
  consejos,
+ SWRegistration,
  DateOptions = {day: "numeric",month: "short",year:"2-digit"};
+
+//This code is from a google example: https://developers.google.com/codelabs/pwa-training/pwa03--going-offline#4
+//Register the service worker if supported
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', async () => {
+		try {
+			SWRegistration = await navigator.serviceWorker.register('service-worker.js');
+			console.log('Service worker registered', SWRegistration);
+		} catch (err) {
+			console.log('Service worker not registered failed', err);
+		}
+	});
+}
+
 document.addEventListener("DOMContentLoaded", (event) => {
 // Page has loaded
   definicionvariables();
@@ -344,10 +359,9 @@ function AgregarDetallesDeZonas() {
   });
  }
  AgregarDetallesDeZonasYaEjecutado = true;
- `Busqueda realizada en ${CeldasVisitadas} Celdas. Agregadas ${CiudadesAgregadas} ciudades de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`;
- console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregadas ${CiudadesAgregadas} ciudades de ${NuevaListaDeZonas.length.Ciudad+NuevaListaDeZonas.length.Ambos} disponibles`);
- console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${TelefonosAgregados} telefonos de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`);
- console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${RepartosAgregados} telefonos de ${NuevaListaDeZonas.length.Telefono+NuevaListaDeZonas.length.Ambos} disponibles`);
+ console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregadas ${CiudadesAgregadas} ciudades de ${NuevaListaDeZonas.length.Ciudad} disponibles`);
+ console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${TelefonosAgregados} telefonos de ${NuevaListaDeZonas.length.Telefono} disponibles`);
+ console.log(`Busqueda realizada en ${CeldasVisitadas} Celdas. Agregados ${RepartosAgregados} días de reparto de ${NuevaListaDeZonas.length.Reparto} disponibles`);
 }
 
 //Parte visual de los buscadores
@@ -2102,24 +2116,18 @@ const NuevaListaDeZonas = {
 		"9633552856"
 	),
 	length: {
-		"Ambos": 210,
-		"Ciudad": 51,
-		"Telefono": 115,
-		"Zonas": 375
+		"Zonas": 379,
+		"Ciudad": 274,
+		"Telefono": 332,
+		"Reparto": 13,
+		"CiudadYTelefonoYReparto": 10,
+		"CiudadYTelefono": 217,
+		"CiudadYReparto": 3,
+		"TelefonoYReparto": 0
 	}
 }
 Object.defineProperty(NuevaListaDeZonas,"length",{enumerable:false});
 
-// relleno
-
-
-/*
-function textReplace(haystack, needle, replacement) {
-  needle = needle.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1')
-                 .replace(/\x08/g, '\\x08');
-  return haystack.replace(new RegExp(needle, 'g'), replacement);
-}
-*/
 function mathRandomInt(a, b) {
   if (a > b) {
     // Swap a and b to ensure a is smaller.
