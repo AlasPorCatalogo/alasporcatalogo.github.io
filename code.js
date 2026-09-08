@@ -34,7 +34,7 @@ if ('serviceWorker' in navigator) {
 			SWRegistration = await navigator.serviceWorker.register('service-worker.js');
 			console.log('Service worker registered', SWRegistration);
 		} catch (err) {
-			console.log('Service worker not registered failed', err);
+			console.log('Service worker not registered', err);
 		}
 	});
 }
@@ -744,7 +744,8 @@ const NuevaListaDeZonas = {
 	),
 	"2-29": new Zona(
 		"Salinas Victoria, El Carmen, Hidalgo, Nuevo Leon",
-		"8131056770"
+		"8131056770",
+		"5"
 	),
 	"2-37": new Zona(
 		"",
@@ -823,23 +824,28 @@ const NuevaListaDeZonas = {
 	),
 	"4-26": new Zona(
 		"Guaymas, Empalme, San Carlos, Sonora",
-		"6221149610"
+		"6221149610",
+		"7-8"
 	),
 	"4-27": new Zona(
 		"Hermosillo, Sonora",
-		"6624253434"
+		"6624253434",
+		"5-6"
 	),
 	"4-29": new Zona(
 		"Hermosillo, Sonora",
-		"6628472017"
+		"6628472017",
+		"8-9"
 	),
 	"4-31": new Zona(
 		"Hermosillo, Sonora",
-		"6621384072"
+		"6621384072",
+		"7-8"
 	),
 	"4-32": new Zona(
 		"Hermosillo, Sonora",
-		"6621278933"
+		"6621278933",
+		"7"
 	),
 	"4-33": new Zona(
 		"Nogales, Sonora",
@@ -854,7 +860,8 @@ const NuevaListaDeZonas = {
 	),
 	"4-48": new Zona(
 		"Hermosillo, Sonora",
-		"6622787772"
+		"6622787772",
+		"6"
 	),
 	"4-49": new Zona(
 		"Nogales, Imuris, Magdalena, Santa Ana, Benjamin Hill, Carbo y Rayon, Sonora",
