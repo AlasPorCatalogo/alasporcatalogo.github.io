@@ -1,6 +1,6 @@
 //This code is combined from the same google example And from a mozilla example:
 //https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches
-const cacheName = 'cache-v3.0.1.4';
+const cacheName = 'cache-v3.0.1.5';
 const precacheResources = ['/', 'index.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
 
 async function deleteCache(key) {
@@ -11,6 +11,7 @@ async function deleteOldCaches() {
   const cacheKeepList = [cacheName];
   const keyList = await caches.keys();
   const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
+  console.log("deleting old caches", cachesToDelete);
   await Promise.all(cachesToDelete.map(deleteCache));
 };
 
@@ -20,7 +21,6 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  console.log("deleting old cache");
   event.waitUntil(deleteOldCaches());
 });
 
