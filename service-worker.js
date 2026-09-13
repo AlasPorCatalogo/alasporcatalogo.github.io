@@ -1,6 +1,6 @@
 //This code is combined from the same google example And from a mozilla example:
 //https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches
-const cacheName = 'cache-v3.0.1.8';
+const cacheName = 'cache-v3.0.1.9';
 const precacheResources = ['/', 'index.html', 'Fechas15.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
 
 async function deleteCache(key) {
@@ -15,6 +15,25 @@ async function deleteOldCaches() {
 	await Promise.all(cachesToDelete.map(deleteCache));
 }
 
+function cleanResponse(response) {
+  const clonedResponse = response.clone();
+
+  // Not all browsers support the Response.body stream, so fall back to reading
+  // the entire body into memory as a blob.
+  const bodyPromise = 'body' in clonedResponse ?
+    Promise.resolve(clonedResponse.body) :
+    clonedResponse.blob();
+
+  return bodyPromise.then((body) => {
+    // new Response() is happy when passed either a stream or a Blob.
+    return new Response(body, {
+      headers: clonedResponse.headers,
+      status: clonedResponse.status,
+      statusText: clonedResponse.statusText,
+    });
+  });
+}
+
 self.addEventListener('install', (event) => {
 	console.log('Service worker install event!');
 	event.waitUntil(caches.open(cacheName).then((cache) => {
@@ -23,7 +42,8 @@ self.addEventListener('install', (event) => {
 				if (!response.ok) {
 					throw new TypeError("bad response status");
 				}
-				cache.put(url, response);
+				let CR = cleanResponse(response)
+				cache.put(url, CR);
 			});
 		})
 	}));
