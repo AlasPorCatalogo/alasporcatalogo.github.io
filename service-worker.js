@@ -1,37 +1,48 @@
 //This code is combined from the same google example And from a mozilla example:
 //https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches
-const cacheName = 'cache-v3.0.1.6';
+const cacheName = 'cache-v3.0.1.7';
 const precacheResources = ['/', 'index.html', 'Fechas15.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
 
 async function deleteCache(key) {
-  await caches.delete(key);
+	await caches.delete(key);
 };
 
 async function deleteOldCaches() {
-  const cacheKeepList = [cacheName];
-  const keyList = await caches.keys();
-  const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
-  console.log("deleting old caches", cachesToDelete);
-  await Promise.all(cachesToDelete.map(deleteCache));
+	const cacheKeepList = [cacheName];
+	const keyList = await caches.keys();
+	const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
+	console.log("deleting old caches", cachesToDelete);
+	await Promise.all(cachesToDelete.map(deleteCache));
 };
 
 self.addEventListener('install', (event) => {
-  console.log('Service worker install event!');
-  event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(precacheResources)));
+	console.log('Service worker install event!');
+	event.waitUntil(caches.open(cacheName).then((cache) => {
+		precacheResources.forEach(url => {
+			url="Fechas15.html";
+			fetch(url).then((response) => {
+				if (!response.ok) {
+					throw new TypeError("bad response status");
+				}
+				response.redirected = false;
+				return cache.put(url, response);
+			});
+		})
+	}));
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(deleteOldCaches());
+	event.waitUntil(deleteOldCaches());
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('Fetch intercepted for:', event.request.url);
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request);
-    }),
-  );
+	console.log('Fetch intercepted for:', event.request.url);
+	event.respondWith(
+		caches.match(event.request).then((cachedResponse) => {
+			if (cachedResponse) {
+				return cachedResponse;
+			}
+			return fetch(event.request);
+		}),
+	);
 });
