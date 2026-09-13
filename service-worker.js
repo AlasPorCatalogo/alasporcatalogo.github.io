@@ -1,6 +1,6 @@
 //This code is combined from the same google example And from a mozilla example:
 //https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#deleting_old_caches
-const cacheName = 'cache-v3.0.1.9';
+const cacheName = 'cache-v3.0.1.10';
 const precacheResources = ['/', 'index.html', 'Fechas15.html', 'tablaspruebas.css', 'code.js', 'favicon.ico'];
 
 async function deleteCache(key) {
@@ -42,7 +42,10 @@ self.addEventListener('install', (event) => {
 				if (!response.ok) {
 					throw new TypeError("bad response status");
 				}
-				let CR = cleanResponse(response)
+				let CRV;
+				cleanResponse(response).then(CR => {
+					CRV = CR;
+				});
 				cache.put(url, CR);
 			});
 		})
