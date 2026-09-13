@@ -1029,7 +1029,8 @@ const NuevaListaDeZonas = {
 	),
 	"7-38": new Zona(
 		"Durango, durango",
-		"6182090897"
+		"6182090897",
+		"5"
 	),
 	"7-42": new Zona(
 		"Gomez Palacio, Durango",
@@ -1474,7 +1475,8 @@ const NuevaListaDeZonas = {
 	),
 	"14-10": new Zona(
 		"Valle de Chalco, Tláhuac, EdoMex",
-		"5528296727"
+		"5528296727",
+		"4"
 	),
 	"14-42": new Zona(
 		"",
@@ -1625,7 +1627,8 @@ const NuevaListaDeZonas = {
 	),
 	"17-17": new Zona(
 		"Rafael Lara Grajales y Puebla de Zaragoza y San Nicolas Buenos Aires, Puebla",
-		"2471745418"
+		"2471745418",
+		"6-8"
 	),
 	"17-18": new Zona(
 		"Puebla, Puebla",
@@ -1979,7 +1982,8 @@ const NuevaListaDeZonas = {
 	),
 	"27-25": new Zona(
 		"Guasave, Sinaloa",
-		"6871250047"
+		"6871250047",
+		"6-7"
 	),
 	"27-26": new Zona(
 		"Angostura, Guamuchil, Sinaloa",
