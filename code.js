@@ -636,7 +636,8 @@ const NuevaListaDeZonas = {
 	),
 	"1-03": new Zona(
 		"Tampico, Tamaulipas",
-		"8334113391"
+		"8334113391",
+		"7-10"
 	),
 	"1-05": new Zona(
 		"",
@@ -789,7 +790,9 @@ const NuevaListaDeZonas = {
 		"6481090058"
 	),
 	"3-21": new Zona(
-		"Chihuahua, Chihuahua"
+		"Chihuahua, Chihuahua",
+		"",
+		"7"
 	),
 	"3-22": new Zona(
 		"",
@@ -905,7 +908,8 @@ const NuevaListaDeZonas = {
 	),
 	"4-60": new Zona(
 		"Mexicali, Baja California",
-		"6862449557"
+		"6862449557",
+		"7-9"
 	),
 	"4-61": new Zona(
 		"",
@@ -1082,7 +1086,8 @@ const NuevaListaDeZonas = {
 	),
 	"7-55": new Zona(
 		"",
-		"8443140021"
+		"8443140021",
+		"6"
 	),
 	"7-56": new Zona(
 		"",
@@ -1237,7 +1242,8 @@ const NuevaListaDeZonas = {
 	),
 	"10-14": new Zona(
 		"Leon, Guanajuato",
-		"4771767865"
+		"4771767865",
+		"6"
 	),
 	"10-16": new Zona(
 		"Abasolo, Guanajuato"
@@ -1272,7 +1278,8 @@ const NuevaListaDeZonas = {
 	),
 	"10-44": new Zona(
 		"Leon, Guanajuato",
-		"4775751273"
+		"4775751273",
+		"6"
 	),
 	"10-51": new Zona(
 		"Silao, Guanajuato",
@@ -1524,6 +1531,11 @@ const NuevaListaDeZonas = {
 	),
 	"14-62": new Zona(
 		"Iztapalapa, Cdmx"
+	),
+	"14-66": new Zona(
+		"",
+		"",
+		"7"
 	),
 	"14-67": new Zona(
 		"Xochimilco, Mexico"
@@ -1780,7 +1792,9 @@ const NuevaListaDeZonas = {
 		"4443853923"
 	),
 	"21-26": new Zona(
-		"San Luis Potosi, San Luis Potosi"
+		"San Luis Potosi, San Luis Potosi",
+		"",
+		"6"
 	),
 	"21-28": new Zona(
 		"San Luis Potosi, San Luis Potosi",
@@ -1868,6 +1882,11 @@ const NuevaListaDeZonas = {
 		"Iguala, Guerrero",
 		"7331276119"
 	),
+	"22-21": new Zona(
+		"",
+		"",
+		"5-7"
+	),
 	"22-23": new Zona(
 		"Acapulco, Tuncingo, Guerrero",
 		"",
@@ -1918,6 +1937,10 @@ const NuevaListaDeZonas = {
 	"23-06": new Zona(
 		"Carmen, Nuevo Leon",
 		"8113779130"
+	),
+	"23-15": new Zona(
+		"",
+		"8115964697"
 	),
 	"23-17": new Zona(
 		"",
