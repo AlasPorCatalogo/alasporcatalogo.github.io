@@ -868,7 +868,8 @@ const NuevaListaDeZonas = {
 	),
 	"4-49": new Zona(
 		"Nogales, Imuris, Magdalena, Santa Ana, Benjamin Hill, Carbo y Rayon, Sonora",
-		"6311772009"
+		"6311772009",
+		"7-9"
 	),
 	"4-50": new Zona(
 		"Tijuana, Baja California",
@@ -937,7 +938,8 @@ const NuevaListaDeZonas = {
 	),
 	"6-07": new Zona(
 		"Zapopan, Tesistan, Jalisco",
-		"3316246527"
+		"3316246527",
+		"6"
 	),
 	"6-09": new Zona(
 		"Guadalajara, Jalisco",
@@ -1715,7 +1717,8 @@ const NuevaListaDeZonas = {
 	),
 	"18-39": new Zona(
 		"Amatlan de los Reyes, Cordoba, Cortazar, Cuichapa, Veracruz",
-		"3541016858"
+		"3541016858",
+		"5-6"
 	),
 	"18-40": new Zona(
 		"Cosoleacaque, Veracruz",
@@ -1951,7 +1954,9 @@ const NuevaListaDeZonas = {
 		"8666385914"
 	),
 	"23-19": new Zona(
-		"Sabinas, Coahuila"
+		"Sabinas, Coahuila",
+		"",
+		"6"
 	),
 	"23-20": new Zona(
 		"Sabinas, Coahuila"
