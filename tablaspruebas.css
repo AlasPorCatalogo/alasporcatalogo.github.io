@@ -17,6 +17,14 @@ span.Informacion {
 	color: #3986ac;
 }
 
+.Transparente span.Informacion {
+	color: #3986ac00;
+}
+
+.Transparente span.FechaCalculada {
+	color: #97b8f200;
+}
+
 span.FechaCalculada {
 	white-space: nowrap;
 	color: #97b8f2;
