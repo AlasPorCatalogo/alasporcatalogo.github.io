@@ -963,7 +963,8 @@ const NuevaListaDeZonas = {
 	),
 	"6-14": new Zona(
 		"Zapopan, Jalisco",
-		"3310468339"
+		"3310468339",
+		"5"
 	),
 	"6-15": new Zona(
 		"Acatlan, Jalisco",
@@ -1717,7 +1718,7 @@ const NuevaListaDeZonas = {
 	),
 	"18-39": new Zona(
 		"Amatlan de los Reyes, Cordoba, Cortazar, Cuichapa, Veracruz",
-		"3541016858",
+		"2292212106",
 		"5-6"
 	),
 	"18-40": new Zona(
